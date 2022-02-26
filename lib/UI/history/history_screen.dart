@@ -13,8 +13,24 @@ class _HistoryScreenState extends State<HistoryScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Symfonia"),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: Text("History", style: TextStyle(
+          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30.0
+        ),),
+        actions: [
+          Row(
+            children: [
+              IconButton(onPressed: (){}, icon: Icon(Icons.sort, color: Colors.black,))
+            ],
+          )
+        ],
       ),
+      body:ListView.builder(
+        itemCount: 20,
+          itemBuilder: (BuildContext context , int index){
+        return ListTile();
+      }),
     );
   }
 }
