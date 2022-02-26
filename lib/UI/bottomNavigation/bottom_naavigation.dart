@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:symfonia/UI/home/home.dart';
+import 'package:symfonia/UI/history/history_screen.dart';
+import 'package:symfonia/UI/notification/notification_screen.dart';
+import 'package:symfonia/UI/profile/profile_screen.dart';
+import 'package:symfonia/UI/web/web_screen.dart';
 
 
 
@@ -16,7 +19,9 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int currentTabIndex = 0;
   List<Widget> pages = [
     const HistoryScreen(),
-
+   const  WebScreen(),
+    const NotificationScreen(),
+    const ProfileScreen(),
   ];
 
   @override
@@ -26,7 +31,11 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         currentIndex: currentTabIndex,
         selectedLabelStyle: TextStyle(color: Colors.black),
         unselectedLabelStyle: TextStyle(color: Colors.grey),
-
+        onTap: (index){
+          setState(() {
+            currentTabIndex = index;
+          });
+        },
         items: const [
         BottomNavigationBarItem(icon: Icon(Icons.bar_chart_outlined),
           title: CircleAvatar(radius: 5.0,),
@@ -41,6 +50,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
         unselectedItemColor: Colors.grey,
         selectedItemColor: Colors.black,
       ),
+      body: pages[currentTabIndex],
     );
   }
 }

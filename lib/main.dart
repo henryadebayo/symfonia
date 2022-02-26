@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:symfonia/UI/bottomNavigation/bottom_naavigation.dart';
 
-import 'UI/home/home.dart';
+import 'UI/history/history_screen.dart';
 
 void main() {
   runApp(const MyApp());
