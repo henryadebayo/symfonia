@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:symfonia/UI/bottomNavigation/bottom_naavigation.dart';
-
-import 'UI/history/history_screen.dart';
+import 'package:symfonia/bloc/coingecko_bloc.dart';
+import 'package:symfonia/services/get_crypto_prices_services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,7 +11,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -18,7 +18,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BottomNavigationScreen(),
+      home: BlocProvider<CoingeckoBloc>(
+        create: (context) =>
+            CoingeckoBloc(coingeckoServices: CoingeckoServices()),
+        child: const BottomNavigationScreen(),
+      ),
     );
   }
 }
