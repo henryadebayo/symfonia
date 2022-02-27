@@ -1,12 +1,12 @@
-
 import 'dart:convert';
 
-CoinGecko coinGeckoFromJson(String str) => CoinGecko.fromJson(json.decode(str));
+CoinGeckoModel CoinGeckoModelFromJson(String str) =>
+    CoinGeckoModel.fromJson(json.decode(str));
 
-String coinGeckoToJson(CoinGecko data) => json.encode(data.toJson());
+String coinGeckoToJson(CoinGeckoModel data) => json.encode(data.toJson());
 
-class CoinGecko {
-  CoinGecko({
+class CoinGeckoModel {
+  CoinGeckoModel({
     required this.id,
     required this.symbol,
     required this.name,
@@ -62,63 +62,65 @@ class CoinGecko {
   Roi roi;
   DateTime lastUpdated;
 
-  factory CoinGecko.fromJson(Map<String, dynamic> json) => CoinGecko(
-    id: json["id"],
-    symbol: json["symbol"],
-    name: json["name"],
-    image: json["image"],
-    currentPrice: json["current_price"].toDouble(),
-    marketCap: json["market_cap"],
-    marketCapRank: json["market_cap_rank"],
-    fullyDilutedValuation: json["fully_diluted_valuation"],
-    totalVolume: json["total_volume"],
-    high24H: json["high_24h"].toDouble(),
-    low24H: json["low_24h"].toDouble(),
-    priceChange24H: json["price_change_24h"].toDouble(),
-    priceChangePercentage24H: json["price_change_percentage_24h"].toDouble(),
-    marketCapChange24H: json["market_cap_change_24h"],
-    marketCapChangePercentage24H: json["market_cap_change_percentage_24h"].toDouble(),
-    circulatingSupply: json["circulating_supply"].toDouble(),
-    totalSupply: json["total_supply"],
-    maxSupply: json["max_supply"],
-    ath: json["ath"].toDouble(),
-    athChangePercentage: json["ath_change_percentage"].toDouble(),
-    athDate: DateTime.parse(json["ath_date"]),
-    atl: json["atl"].toDouble(),
-    atlChangePercentage: json["atl_change_percentage"].toDouble(),
-    atlDate: DateTime.parse(json["atl_date"]),
-    roi: Roi.fromJson(json["roi"]),
-    lastUpdated: DateTime.parse(json["last_updated"]),
-  );
+  factory CoinGeckoModel.fromJson(Map<String, dynamic> json) => CoinGeckoModel(
+        id: json["id"],
+        symbol: json["symbol"],
+        name: json["name"],
+        image: json["image"],
+        currentPrice: json["current_price"].toDouble(),
+        marketCap: json["market_cap"],
+        marketCapRank: json["market_cap_rank"],
+        fullyDilutedValuation: json["fully_diluted_valuation"],
+        totalVolume: json["total_volume"],
+        high24H: json["high_24h"].toDouble(),
+        low24H: json["low_24h"].toDouble(),
+        priceChange24H: json["price_change_24h"].toDouble(),
+        priceChangePercentage24H:
+            json["price_change_percentage_24h"].toDouble(),
+        marketCapChange24H: json["market_cap_change_24h"],
+        marketCapChangePercentage24H:
+            json["market_cap_change_percentage_24h"].toDouble(),
+        circulatingSupply: json["circulating_supply"].toDouble(),
+        totalSupply: json["total_supply"],
+        maxSupply: json["max_supply"],
+        ath: json["ath"].toDouble(),
+        athChangePercentage: json["ath_change_percentage"].toDouble(),
+        athDate: DateTime.parse(json["ath_date"]),
+        atl: json["atl"].toDouble(),
+        atlChangePercentage: json["atl_change_percentage"].toDouble(),
+        atlDate: DateTime.parse(json["atl_date"]),
+        roi: Roi.fromJson(json["roi"]),
+        lastUpdated: DateTime.parse(json["last_updated"]),
+      );
 
   Map<String, dynamic> toJson() => {
-    "id": id,
-    "symbol": symbol,
-    "name": name,
-    "image": image,
-    "current_price": currentPrice,
-    "market_cap": marketCap,
-    "market_cap_rank": marketCapRank,
-    "fully_diluted_valuation": fullyDilutedValuation,
-    "total_volume": totalVolume,
-    "high_24h": high24H,
-    "low_24h": low24H,
-    "price_change_24h": priceChange24H,
-    "price_change_percentage_24h": priceChangePercentage24H,
-    "market_cap_change_24h": marketCapChange24H,
-    "market_cap_change_percentage_24h": marketCapChangePercentage24H,
-    "circulating_supply": circulatingSupply,
-    "total_supply": totalSupply,
-    "max_supply": maxSupply,
-    "ath": ath,
-    "ath_change_percentage": athChangePercentage,
-    "ath_date": athDate.toIso8601String(),
-    "atl": atl,
-    "atl_change_percentage": atlChangePercentage,
-    "atl_date": atlDate.toIso8601String(),
-    "roi": roi.toJson(),
-    "last_updated": lastUpdated.toIso8601String(),
-  };
+        "id": id,
+        "symbol": symbol,
+        "name": name,
+        "image": image,
+        "current_price": currentPrice,
+        "market_cap": marketCap,
+        "market_cap_rank": marketCapRank,
+        "fully_diluted_valuation": fullyDilutedValuation,
+        "total_volume": totalVolume,
+        "high_24h": high24H,
+        "low_24h": low24H,
+        "price_change_24h": priceChange24H,
+        "price_change_percentage_24h": priceChangePercentage24H,
+        "market_cap_change_24h": marketCapChange24H,
+        "market_cap_change_percentage_24h": marketCapChangePercentage24H,
+        "circulating_supply": circulatingSupply,
+        "total_supply": totalSupply,
+        "max_supply": maxSupply,
+        "ath": ath,
+        "ath_change_percentage": athChangePercentage,
+        "ath_date": athDate.toIso8601String(),
+        "atl": atl,
+        "atl_change_percentage": atlChangePercentage,
+        "atl_date": atlDate.toIso8601String(),
+        "roi": roi.toJson(),
+        "last_updated": lastUpdated.toIso8601String(),
+      };
 }
 
 class Roi {
@@ -133,14 +135,14 @@ class Roi {
   double percentage;
 
   factory Roi.fromJson(Map<String, dynamic> json) => Roi(
-    times: json["times"].toDouble(),
-    currency: json["currency"],
-    percentage: json["percentage"].toDouble(),
-  );
+        times: json["times"].toDouble(),
+        currency: json["currency"],
+        percentage: json["percentage"].toDouble(),
+      );
 
   Map<String, dynamic> toJson() => {
-    "times": times,
-    "currency": currency,
-    "percentage": percentage,
-  };
+        "times": times,
+        "currency": currency,
+        "percentage": percentage,
+      };
 }
