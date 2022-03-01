@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:symfonia/services/get_crypto_prices_services.dart';
 
 class history_screen_widget extends StatelessWidget {
-  const history_screen_widget({
+  CoingeckoServices? coingeckoServices;
+  String? coinName;
+  String? coinPrice;
+  String? coinImageUrl;
+  history_screen_widget({
+    this.coinImageUrl,
+    this.coinName,
+    this.coinPrice,
+    this.coingeckoServices,
     Key? key,
   }) : super(key: key);
 
@@ -20,24 +29,35 @@ class history_screen_widget extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10.0),
-                  image: const DecorationImage(image: NetworkImage("https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579")
-                  ),
+                  image: const DecorationImage(
+                      image: NetworkImage(
+                          "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579")),
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal:8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Bitcoin", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20.0),),
-                    Text("price", style: TextStyle(color: Colors.grey),),
+                    Text(
+                      coinName!,
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold, fontSize: 20.0),
+                    ),
+                    Text(
+                      coinPrice!,
+                      style: TextStyle(color: Colors.grey),
+                    ),
                   ],
                 ),
               ),
             ],
           ),
-          Text("price", style: TextStyle( fontWeight: FontWeight.bold, fontSize: 17.0),),
+          Text(
+            "price",
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
+          ),
         ],
       ),
     );
