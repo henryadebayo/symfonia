@@ -16,11 +16,11 @@ class HistoryScreen extends StatefulWidget {
 }
 
 class _HistoryScreenState extends State<HistoryScreen> {
-  @override
-  void initState() {
-    context.read<CoingeckoBloc>().add(CoingeckoGetPriceEvent());
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   context.read<CoingeckoBloc>().add(CoingeckoGetPriceEvent());
+  //   super.initState();
+  // }
 
   late final CoinGeckoModel coinGeckoModel;
   late final CoingeckoServices coingeckoServices;
@@ -60,7 +60,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
       ),
       body:
           BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state) {
-        if (state.isLoading) {
+        if (state is CoingeckoGetPrice) {
           return const CircularProgressIndicator();
         } else if (state is CoingeckoLoaded) {
           return Padding(

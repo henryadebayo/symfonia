@@ -10,8 +10,7 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
   final CoingeckoServices coingeckoServices;
 
   CoingeckoBloc({required this.coingeckoServices})
-      : super(CoingeckoGetPrice(
-            isLoading: true, coingeckoServices: CoingeckoServices()));
+      : super(CoingeckoGetPrice(coingeckoServices: CoingeckoServices()));
   @override
   Stream<CoingeckoState> mapEventToState(
     CoingeckoEvent event,
@@ -21,10 +20,9 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
         final prices = await coingeckoServices.getCrytoPrices();
         yield CoingeckoLoaded(
           prices!,
-          isLoading: false,
         );
       } catch (e) {
-        yield NetworkException("${e.toString()}", isLoading: false);
+        yield NetworkException("${e.toString()}");
       }
     }
   }
