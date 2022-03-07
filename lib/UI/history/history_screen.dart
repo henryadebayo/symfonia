@@ -66,10 +66,10 @@ class _HistoryScreenState extends State<HistoryScreen> {
           return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: ListView.builder(
-                itemCount: state.price?.length,
+                itemCount: state.price.length,
                 itemBuilder: (BuildContext context, int index) {
                   return history_screen_widget(
-                      coinName: state.price?[index].name.toString());
+                      coinName: state.price[index].name.toString());
                 }),
           );
         } else if (state is CoingeckoGetPrice) {
