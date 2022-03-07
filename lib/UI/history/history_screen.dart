@@ -26,98 +26,63 @@ class _HistoryScreenState extends State<HistoryScreen> {
   late final CoingeckoServices coingeckoServices;
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<CoingeckoBloc, CoingeckoState>(
-     builder: (context, state) {
-      if (state.isLoading ) {
-        return CircularProgressIndicator();
-        }else if(state is CoingeckoLoaded){
-        return
-          Scaffold(
-          backgroundColor: Colors.white10,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0.0,
-            title:const Text(
-              "History",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0),
-            ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.sort,
-                        color: Colors.black,
+    return Scaffold(
+        backgroundColor: Colors.white10,
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              elevation: 0.0,
+              title:const Text(
+                "History",
+                style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 30.0),
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.only(right: 16.0),
+                  child: Row(
+                    children: [
+                      IconButton(
+                        onPressed: () {},
+                        icon: const Icon(
+                          Icons.sort,
+                          color: Colors.black,
+                        ),
                       ),
-                    ),
-                    Text(
-                      "Sort/Filter",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          body: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ListView.builder(
-                itemCount: coingeckoServices.cyptoData.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return history_screen_widget(
-                      coinName: coingeckoServices.cyptoData[index].);
-                }),
-          ),
-        );
-      } else if (state is CoingeckoGetPrice) {
-        Scaffold(
-          backgroundColor: Colors.white10,
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            elevation: 0.0,
-            title: Text(
-              "History",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 30.0),
+                      const Text(
+                        "Sort/Filter",
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                      )
+                    ],
+                  ),
+                )
+              ],
             ),
-            actions: [
-              Padding(
-                padding: const EdgeInsets.only(right: 16.0),
-                child: Row(
-                  children: [
-                    IconButton(
-                      onPressed: () {},
-                      icon: Icon(
-                        Icons.sort,
-                        color: Colors.black,
-                      ),
-                    ),
-                    Text(
-                      "Sort/Filter",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold, color: Colors.black),
-                    )
-                  ],
-                ),
-              )
-            ],
-          ),
-          body: Center(
-            child: Container(),
-          ),
-        );
-      }
-      // throw "An Error occoured ";
-       return const  Center(child: const CircularProgressIndicator());
-    });
+      body: BlocBuilder<CoingeckoBloc, CoingeckoState>(
+       builder: (context, state) {
+        if (state.isLoading ) {
+          return const CircularProgressIndicator();
+          }else if(state is CoingeckoLoaded){
+          return
+           Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: ListView.builder(
+                  itemCount: state.coingeckoServices.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return history_screen_widget(
+                        coinName: coingeckoServices.cyptoData[index].);
+                  }),
+          );
+        } else if (state is CoingeckoGetPrice) {
+        Center(
+              child: Container(),
+          );
+        }
+        // throw "An Error occoured ";
+         return const  Center(child:  CircularProgressIndicator());
+      }),
+    );
   }
 }
