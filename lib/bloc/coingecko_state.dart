@@ -17,7 +17,8 @@ class CoingeckoGetPrice extends CoingeckoState {
 }
 
 class CoingeckoLoaded extends CoingeckoState {
-  const CoingeckoLoaded({required bool isLoading})
+  final List<CoinGeckoModel> price;
+  const CoingeckoLoaded(this.price, {required bool isLoading})
       : super(isLoading: isLoading);
 }
 

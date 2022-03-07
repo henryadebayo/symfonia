@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:symfonia/data/models/crypto_model.dart';
 import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 
 part 'coingecko_event.dart';
@@ -18,7 +19,8 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
     if (event is CoingeckoGetPriceEvent) {
       try {
         final prices = await coingeckoServices.getCrytoPrices();
-        yield const CoingeckoLoaded(
+        yield CoingeckoLoaded(
+          prices!,
           isLoading: false,
         );
       } catch (e) {
@@ -27,22 +29,3 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
     }
   }
 }
-//     on<CoingeckoGetPriceEvent>((event, emit) async {
-//       try {
-//          await coingeckoServices.getCrytoPrices();
-//       yield  CoingeckoLoaded(isLoading: false);
-        
-//       } catch (e) {
-
-//         throw e.toString();
-//       }
-     
-//     });
-//     on<CoingeckoLoadedEvent>((event, emit) {
-//       emit(const CoingeckoLoaded(isLoading: false));
-//     });
-//     on<NetworkExceptionEvent>((event, emit) {
-//       // TODO: implement event handler
-//     });
-//   }
-// }

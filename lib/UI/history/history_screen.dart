@@ -27,61 +27,58 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white10,
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              elevation: 0.0,
-              title:const Text(
-                "History",
-                style: TextStyle(
+      backgroundColor: Colors.white10,
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: const Text(
+          "History",
+          style: TextStyle(
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30.0),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16.0),
+            child: Row(
+              children: [
+                IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.sort,
                     color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 30.0),
-              ),
-              actions: [
-                Padding(
-                  padding: const EdgeInsets.only(right: 16.0),
-                  child: Row(
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          Icons.sort,
-                          color: Colors.black,
-                        ),
-                      ),
-                      const Text(
-                        "Sort/Filter",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, color: Colors.black),
-                      )
-                    ],
                   ),
+                ),
+                const Text(
+                  "Sort/Filter",
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.black),
                 )
               ],
             ),
-      body: BlocBuilder<CoingeckoBloc, CoingeckoState>(
-       builder: (context, state) {
-        if (state.isLoading ) {
+          )
+        ],
+      ),
+      body:
+          BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state) {
+        if (state.isLoading) {
           return const CircularProgressIndicator();
-          }else if(state is CoingeckoLoaded){
-          return
-           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: ListView.builder(
-                  itemCount: state.coingeckoServices.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return history_screen_widget(
-                        coinName: coingeckoServices.cyptoData[index].);
-                  }),
+        } else if (state is CoingeckoLoaded) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ListView.builder(
+                itemCount: state.price?.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return history_screen_widget(
+                      coinName: state.price?[index].name.toString());
+                }),
           );
         } else if (state is CoingeckoGetPrice) {
-        Center(
-              child: Container(),
+          Center(
+            child: Container(),
           );
         }
         // throw "An Error occoured ";
-         return const  Center(child:  CircularProgressIndicator());
+        return const Center(child: CircularProgressIndicator());
       }),
     );
   }
