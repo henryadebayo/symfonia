@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:symfonia/services/get_crypto_prices_services.dart';
+import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 
 class history_screen_widget extends StatelessWidget {
   CoingeckoServices? coingeckoServices;
@@ -42,19 +42,19 @@ class history_screen_widget extends StatelessWidget {
                   children: [
                     Text(
                       coinName!,
-                      style: TextStyle(
+                      style: const TextStyle(
                           fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
                     Text(
                       coinPrice!,
-                      style: TextStyle(color: Colors.grey),
+                      style: const TextStyle(color: Colors.grey),
                     ),
                   ],
                 ),
               ),
             ],
           ),
-          Text(
+          const Text(
             "price",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
           ),
