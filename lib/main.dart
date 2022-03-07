@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:symfonia/UI/bottomNavigation/bottom_naavigation.dart';
 import 'package:symfonia/bloc/coingecko_bloc.dart';
-import 'package:symfonia/services/get_crypto_prices_services.dart';
+
+import 'data/services/get_crypto_prices_services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       ),
       home: BlocProvider<CoingeckoBloc>(
         create: (context) =>
-            CoingeckoBloc(coingeckoServices: CoingeckoServices()),
+            CoingeckoBloc(coingeckoServices: CoingeckoServices())
+              ..add(CoingeckoGetPriceEvent()),
         child: const BottomNavigationScreen(),
       ),
     );

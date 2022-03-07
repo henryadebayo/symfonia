@@ -1,9 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:symfonia/bloc/coingecko_bloc.dart';
-import 'package:symfonia/models/crypto_model.dart';
-import 'package:symfonia/services/get_crypto_prices_services.dart';
+import 'package:symfonia/data/models/crypto_model.dart';
+import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 
 import 'history_widgets/history_screen_widget.dart';
 
@@ -27,19 +26,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
   late final CoingeckoServices coingeckoServices;
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<CoingeckoBloc, CoingeckoState>(
-        listener: (context, state) {
-      if (state.isLoading) {
-        const CircularProgressIndicator();
-      }
-    }, builder: (context, state) {
-      if (state is CoingeckoLoaded) {
-        return Scaffold(
+    return BlocBuilder<CoingeckoBloc, CoingeckoState>(
+     builder: (context, state) {
+      if (state.isLoading ) {
+        return CircularProgressIndicator();
+        }else if(state is CoingeckoLoaded){
+        return
+          Scaffold(
           backgroundColor: Colors.white10,
           appBar: AppBar(
             backgroundColor: Colors.white,
             elevation: 0.0,
-            title: Text(
+            title:const Text(
               "History",
               style: TextStyle(
                   color: Colors.black,
@@ -119,7 +117,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         );
       }
       // throw "An Error occoured ";
-       return Center(child: const CircularProgressIndicator());
+       return const  Center(child: const CircularProgressIndicator());
     });
   }
 }
