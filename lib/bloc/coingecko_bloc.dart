@@ -10,7 +10,7 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
   final CoingeckoServices coingeckoServices;
 
   CoingeckoBloc({required this.coingeckoServices})
-      : super(CoingeckoGetPrice(coingeckoServices: CoingeckoServices()));
+      : super(const CoingeckoGetPrice());
   @override
   Stream<CoingeckoState> mapEventToState(
     CoingeckoEvent event,
