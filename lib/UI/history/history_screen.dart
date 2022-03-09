@@ -77,7 +77,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
             child: Container(),
           );
         }
-        // throw "An Error occoured ";
         return const Center(child: CircularProgressIndicator());
       }),
     );
