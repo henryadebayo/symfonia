@@ -60,27 +60,27 @@ class _HistoryScreenState extends State<HistoryScreen> {
         ],
       ),
       body: BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state){
-        return const CircularProgressIndicator();
-        // if (state is CoingeckoGetPrice){
-        //   return const Center(
-        //     child: CircularProgressIndicator(),
-        //   );
-        // }
+        // return const CircularProgressIndicator();
+        if (state is CoingeckoGetPrice){
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }else if( state is CoingeckoLoaded){
+          return
+                Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: ListView.builder(
+                    itemCount: state.price.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return history_screen_widget(
+                          coinName: state.price[index].name.toString());
+                    }),
+                );
+        }
       },),
     );
   }
 }
-     // body:
-    //       BlocBuilder<CoingeckoBloc,CoingeckoState>(builder: (context, state){
-    //         if (state is CoingeckoGetPrice){
-    //           return const Center(
-    //             child: CircularProgressIndicator(),
-    //           );
-    //         }
-    // }
-    // }),
-
-
 
       //   if (state is CoingeckoGetPrice) {
       //     return const Center(child: CircularProgressIndicator());
