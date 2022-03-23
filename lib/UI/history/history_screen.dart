@@ -24,6 +24,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
 
   late final CoinGeckoModel coinGeckoModel;
   late final CoingeckoServices coingeckoServices;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,27 +59,42 @@ class _HistoryScreenState extends State<HistoryScreen> {
           )
         ],
       ),
-      body:
-          BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state) {
-        if (state is CoingeckoGetPrice) {
-          return const CircularProgressIndicator();
-        } else if (state is CoingeckoLoaded) {
-          return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: ListView.builder(
-                itemCount: state.price.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return history_screen_widget(
-                      coinName: state.price[index].name.toString());
-                }),
-          );
-        } else if (state is CoingeckoGetPrice) {
-          Center(
-            child: Container(),
-          );
-        }
-        return const Center(child: CircularProgressIndicator());
-      }),
+      body: BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state){
+        return const CircularProgressIndicator();
+        // if (state is CoingeckoGetPrice){
+        //   return const Center(
+        //     child: CircularProgressIndicator(),
+        //   );
+        // }
+      },),
     );
   }
 }
+     // body:
+    //       BlocBuilder<CoingeckoBloc,CoingeckoState>(builder: (context, state){
+    //         if (state is CoingeckoGetPrice){
+    //           return const Center(
+    //             child: CircularProgressIndicator(),
+    //           );
+    //         }
+    // }
+    // }),
+
+
+
+      //   if (state is CoingeckoGetPrice) {
+      //     return const Center(child: CircularProgressIndicator());
+      //   } else if (state is CoingeckoLoaded) {
+      //     return
+      //       Padding(
+      //       padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      //       child: ListView.builder(
+      //           itemCount: state.price.length,
+      //           itemBuilder: (BuildContext context, int index) {
+      //             return history_screen_widget(
+      //                 coinName: state.price[index].name.toString());
+      //           }),
+      //     );
+      //   }
+      //   return const Center(child: CircularProgressIndicator());
+      // }),
