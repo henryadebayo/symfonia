@@ -59,8 +59,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           )
         ],
       ),
-      body: BlocBuilder<CoingeckoBloc, CoingeckoState>(builder: (context, state){
-        // return const CircularProgressIndicator();
+      body: BlocBuilder<CoingeckoBloc, CoingeckoState>(builder:(context, state){
         if (state is CoingeckoGetPrice){
           return const Center(
             child: CircularProgressIndicator(),
