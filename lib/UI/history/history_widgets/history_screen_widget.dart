@@ -4,9 +4,11 @@ import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 class history_screen_widget extends StatelessWidget {
   CoingeckoServices? coingeckoServices;
   String? coinName;
+  String ath;
   String coinPrice;
   String? coinImageUrl;
   history_screen_widget({
+    required this.ath,
     this.coinImageUrl,
     this.coinName,
     required this.coinPrice,
@@ -46,7 +48,7 @@ class history_screen_widget extends StatelessWidget {
                           fontWeight: FontWeight.bold, fontSize: 20.0),
                     ),
                     Text(
-                      coinPrice,
+                      ath,
                       style: const TextStyle(color: Colors.grey),
                     ),
                   ],
@@ -54,8 +56,8 @@ class history_screen_widget extends StatelessWidget {
               ),
             ],
           ),
-          const Text(
-            "price",
+          Text(
+            coinPrice,
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
           ),
         ],
