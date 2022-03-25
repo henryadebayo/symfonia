@@ -37,7 +37,6 @@ class CoingeckoServices {
       var response = await http.get(url);
       if (response.statusCode == 200) {
         final List<CoinGeckoModel> prices = coinGeckoModelFromJson(response.body);
-        // List<dynamic> body = response.body as List;
         return prices;
 
       } else {
