@@ -13,8 +13,11 @@ class CoingeckoGetPrice extends CoingeckoState {
 // : super(CoingeckoGetPrice(coingeckoServices: CoingeckoServices()))
 
 class CoingeckoLoaded extends CoingeckoState {
-  final List<CoinGeckoModel> price;
-  const CoingeckoLoaded(this.price) : super();
+   List<CoinGeckoModel> price;
+  // setprice (prices) {
+  //   price = prices;
+  // }
+    CoingeckoLoaded({required this.price}) : super();
 }
 
 class NetworkException extends CoingeckoState {
