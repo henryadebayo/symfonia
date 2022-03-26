@@ -34,6 +34,7 @@ class history_screen_widget extends StatelessWidget {
                   Row(
                     children: [
                       Image.network(coinImageUrl,height: 50.0, width: 50.0,),
+                     const SizedBox(width: 8.0,),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 8.0),
                         child: Column(

@@ -67,7 +67,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
         }else if(state is CoingeckoLoaded){
           return
                 Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding: const EdgeInsets.symmetric(horizontal: 10.0),
                 child: ListView.builder(
                     itemCount: state.price.length,
                     itemBuilder: (BuildContext context, int index) {
