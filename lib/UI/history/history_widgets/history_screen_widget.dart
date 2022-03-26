@@ -47,7 +47,7 @@ class history_screen_widget extends StatelessWidget {
                                   fontWeight: FontWeight.bold, fontSize: 20.0),
                             ),
                             Text(
-                              ath,
+                              "\u0024 $ath",
                               style: const TextStyle(color: Colors.lightGreen),
                             ),
                           ],
@@ -56,7 +56,7 @@ class history_screen_widget extends StatelessWidget {
                     ],
                   ),
                   Text(
-                    coinPrice,
+                    "\u0024 $coinPrice",
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 17.0),
                   ),
                 ],
