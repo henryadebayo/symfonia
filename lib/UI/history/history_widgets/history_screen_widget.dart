@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 
@@ -6,10 +7,11 @@ class history_screen_widget extends StatelessWidget {
   String? coinName;
   String ath;
   String coinPrice;
-  String? coinImageUrl;
+  String coinImageUrl;
   history_screen_widget({
+
     required this.ath,
-    this.coinImageUrl,
+    required this.coinImageUrl,
     this.coinName,
     required this.coinPrice,
     this.coingeckoServices,
@@ -25,17 +27,7 @@ class history_screen_widget extends StatelessWidget {
         children: [
           Row(
             children: [
-              Container(
-                height: 100.0,
-                width: 70.0,
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(10.0),
-                  image: const DecorationImage(
-                      image: NetworkImage(
-                          "https://assets.coingecko.com/coins/images/1/large/bitcoin.png?1547033579")),
-                ),
-              ),
+              Image.network(coinImageUrl,height: 70.0, width: 70.0,),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: Column(

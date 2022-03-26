@@ -72,7 +72,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     itemCount: state.price.length,
                     itemBuilder: (BuildContext context, int index) {
                       return history_screen_widget(
-                          coinName: state.price[index].name.toString(), coinPrice: state.price[index].currentPrice.toString(), ath: state.price[index].ath.toString(),
+                          coinName: state.price[index].name.toString(), coinPrice: state.price[index].currentPrice.toString(), ath: state.price[index].ath.toString(), coinImageUrl: state.price[index].image.toString(),
                       );
                     }),
                 );
