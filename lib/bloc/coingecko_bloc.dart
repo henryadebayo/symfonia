@@ -24,7 +24,6 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
        // CoinGeckoModel m = CoinGeckoModel.fromJson(response[1]);
         emit( CoingeckoLoaded(price: response),
         );
-        print("this is $response");
       } catch (e) {
         emit(
             NetworkException("${e.toString()}")
