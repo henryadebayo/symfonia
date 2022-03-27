@@ -21,7 +21,6 @@ class CoingeckoBloc extends Bloc<CoingeckoEvent, CoingeckoState> {
 
         var response = await coingeckoServices.getCrytoPrices();
 
-       // CoinGeckoModel m = CoinGeckoModel.fromJson(response[1]);
         emit( CoingeckoLoaded(price: response),
         );
       } catch (e) {

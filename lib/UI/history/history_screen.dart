@@ -28,18 +28,18 @@ class _HistoryScreenState extends State<HistoryScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white10,
+    //  backgroundColor: Colors.white10,
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0.0,
         title: const Text(
-          "History",
+          "Symphonia",
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 30.0),
+              color: Colors.black, fontWeight: FontWeight.bold, fontSize: 25.0),
         ),
         actions: [
           Padding(
-            padding: const EdgeInsets.only(right: 16.0),
+            padding: const EdgeInsets.only(right: 10.0),
             child: Row(
               children: [
                 IconButton(
@@ -72,7 +72,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     itemCount: state.price.length,
                     itemBuilder: (BuildContext context, int index) {
                       return history_screen_widget(
-                          coinName: state.price[index].name.toString(), coinPrice:state.price[index].currentPrice.toString(), ath: state.price[index].ath.toString(), coinImageUrl: state.price[index].image.toString(),
+                          coinName: state.price[index].name.toString(),
+                        coinPrice:state.price[index].currentPrice.toString(),
+                        symbol: state.price[index].symbol.toString(),
+                        coinImageUrl: state.price[index].image.toString(),
+                        change:state.price[index].priceChange24H!,
+                        changePercent: state.price[index].priceChangePercentage24H!,
                       );
                     }),
                 );
