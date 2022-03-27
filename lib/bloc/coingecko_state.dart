@@ -6,17 +6,10 @@ abstract class CoingeckoState {
 }
 
 class CoingeckoGetPrice extends CoingeckoState {
-//  final CoingeckoServices coingeckoServices;
   const CoingeckoGetPrice() : super();
 }
-//{required this.coingeckoServices}
-// : super(CoingeckoGetPrice(coingeckoServices: CoingeckoServices()))
-
 class CoingeckoLoaded extends CoingeckoState {
    List<CoinGeckoModel> price;
-  // setprice (prices) {
-  //   price = prices;
-  // }
     CoingeckoLoaded({required this.price}) : super();
 }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:symfonia/UI/history/history_screen.dart';
+import 'package:symfonia/UI/history/home_screen.dart';
 import 'package:symfonia/UI/notification/notification_screen.dart';
 import 'package:symfonia/UI/profile/profile_screen.dart';
 import 'package:symfonia/UI/web/web_screen.dart';
@@ -18,7 +18,7 @@ class BottomNavigationScreen extends StatefulWidget {
 class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
   int currentTabIndex = 0;
   List<Widget> pages = [
-    const HistoryScreen(),
+    const HomeScreen(),
    const  WebScreen(),
     const NotificationScreen(),
     const ProfileScreen(),

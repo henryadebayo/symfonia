@@ -45,6 +45,6 @@ class CoingeckoServices {
     } catch (e) {
       print(e.toString());
     }
-    throw "null";
+    throw Failure(message: "unable to get prices at the moment please try again later ");
   }
 }

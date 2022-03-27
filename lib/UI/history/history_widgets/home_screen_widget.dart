@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:symfonia/data/services/get_crypto_prices_services.dart';
 
-class history_screen_widget extends StatelessWidget {
+class HomeScreenWidget extends StatelessWidget {
   CoingeckoServices? coingeckoServices;
   String? coinName;
   String symbol;
@@ -10,7 +10,7 @@ class history_screen_widget extends StatelessWidget {
   double changePercent;
   String coinPrice;
   String coinImageUrl;
-  history_screen_widget({
+  HomeScreenWidget({
 
     required this.symbol,
     required this.change,
@@ -31,7 +31,7 @@ class history_screen_widget extends StatelessWidget {
           child: Container(
             height: 100,
             decoration: BoxDecoration(
-              color: Colors.grey[300],
+              color: Colors.white,
               borderRadius: BorderRadius.circular(20.0),
               boxShadow: const [
                 BoxShadow(
@@ -111,7 +111,7 @@ class history_screen_widget extends StatelessWidget {
                       ),
                       Text('%'+change.toString(),
                         style: TextStyle(color: change.toDouble() < 0 ? Colors.red : Colors.green),),
-                      Text(changePercent.toDouble() < 0 ? '-' + changePercent.toDouble.toString(), style: TextStyle(color: changePercent.toDouble() < 0 ? Colors.red : Colors.green),),
+                      Text(changePercent.toDouble().toString(), style: TextStyle(color: changePercent.toDouble() < 0 ? Colors.red : Colors.green),),
                     ],
                   ),
                 ),
